@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+}
+
+.shard-container {
+    position: relative;
+    width: 90vw;
+    height: 80vh;
+    max-width: 1200px;
+    background: #000;
+    overflow: hidden;
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
+}
+
+.projects-label {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    z-index: 10;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.shard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: clip-path 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s ease;
+    cursor: pointer;
+}
+
+.shard-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Irregular Shard Shapes using Clip-Path (Interlocking Polygon) */
+
+.shard-1 {
+    z-index: 4;
+    clip-path: polygon(0 0, 60% 0, 50% 50%, 0 55%);
+}
+
+.shard-2 {
+    z-index: 3;
+    clip-path: polygon(60% 0, 100% 0, 100% 45%, 50% 50%);
+}
+
+.shard-3 {
+    z-index: 2;
+    clip-path: polygon(0 55%, 50% 50%, 40% 100%, 0 100%);
+}
+
+.shard-4 {
+    z-index: 1;
+    clip-path: polygon(50% 50%, 100% 45%, 100% 100%, 40% 100%);
+}
+
+/* Shard Image Styling */
+.shard-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.6s ease;
+}
+
+.shard-image.hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 2;
+}
+
+/* Split Typography Positioning */
+.text-wrapper {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Specific positions to "bridge" the de and l across the shard split */
+.shard-1 .text-wrapper {
+    top: 25%;
+    left: 30%;
+    /* Moved left to stay inside the polygon */
+    width: 25%;
+    height: 15%;
+    justify-content: flex-end;
+    /* Align 'de' to the right edge of its box */
+}
+
+.shard-2 .text-wrapper {
+    top: 25%;
+    left: 55%;
+    /* Moved slightly right for padding from the split */
+    width: 25%;
+    height: 15%;
+    justify-content: flex-start;
+    /* Align 'l' to the left edge of its box */
+}
+
+.shard-4 .text-wrapper {
+    top: 60%;
+    left: 60%;
+    width: 25%;
+    height: 25%;
+}
+
+.main-text {
+    font-size: 10rem;
+    /* Increased size back as requested layout is stable */
+    font-weight: 900;
+    letter-spacing: -8px;
+    color: #fff;
+    text-transform: lowercase;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.6s ease;
+    text-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Hover States for all shards */
+.shard:hover {
+    z-index: 15;
+    transform: scale(1.01);
+}
+
+.shard:hover .shard-image.default {
+    opacity: 0;
+}
+
+.shard:hover .shard-image.hover {
+    opacity: 1;
+}
+
+.shard:hover .shard-image {
+    transform: scale(1.1);
+}
+
+.shard:hover .main-text {
+    transform: translateY(-10px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+    .main-text {
+        font-size: 6rem;
+        letter-spacing: -2px;
+    }
+}
+
+@media (max-width: 600px) {
+    .shard-container {
+        height: 90vh;
+    }
+
+    .shard {
+        position: relative;
+        height: 25%;
+        width: 100%;
+        clip-path: none !important;
+    }
+
+    .main-text {
+        font-size: 4rem;
+    }
+}
