@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirPods Pro - Apple Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Inter for Apple-like aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+</head>
+
+<body>
+    <!-- Particle Canvas Overlay -->
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="loader">
+        <div class="loader-content">
+            <span class="loader-percent">0%</span>
+            <div class="loader-bar-bg">
+                <div class="loader-bar-fill"></div>
+            </div>
+            <p>Perfecting the experience...</p>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="canvas-container">
+                <canvas id="airpods-canvas"></canvas>
+
+                <!-- Floating AirPods (Animated by GSAP) -->
+                <div class="floating-pods">
+                    <div class="pod-wrapper pod-left-wrapper">
+                        <img src="https://www.apple.com/v/airpods-pro/q/images/overview/magical_experience_left_ear__eojmsunw1f2u_large.png"
+                            alt="" class="pod pod-left" crossorigin="anonymous">
+                        <div class="pod-marker left-marker">
+                            <span class="marker-dot"></span>
+                            <div class="marker-label">H2 Chip Architecture</div>
+                        </div>
+                    </div>
+                    <div class="pod-wrapper pod-right-wrapper">
+                        <img src="https://www.apple.com/v/airpods-pro/q/images/overview/magical_experience_right_ear__dx9x1stbe8uu_large.png"
+                            alt="" class="pod pod-right" crossorigin="anonymous">
+                        <div class="pod-marker right-marker">
+                            <span class="marker-dot"></span>
+                            <div class="marker-label">High-Excursion Driver</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-overlays">
+                <div class="overlay" id="overlay-1">
+                    <div class="side-info left">
+                        <h1>AirPods Pro</h1>
+                        <p>Magic like you've never heard.</p>
+                        <div class="tech-specs">
+                            <span>Active Noise Cancellation</span>
+                            <span>Adaptive Transparency</span>
+                            <span>Personalized Spatial Audio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overlay" id="overlay-2">
+                    <div class="side-info right">
+                        <h2>Personalized Spatial Audio</h2>
+                        <p>With dynamic head tracking, sound is placed all around you to create an immersive
+                            three-dimensional listening experience for music, TV shows, and movies.</p>
+                        <div class="tech-specs">
+                            <span>Dolby Atmos Support</span>
+                            <span>Head Tracking Sensors</span>
+                            <span>Computational Audio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overlay" id="overlay-3">
+                    <div class="side-info left">
+                        <h2>Pro-level Active Noise Cancellation</h2>
+                        <p>Up to 2x more Active Noise Cancellation than the previous generation. The H2 chip works with
+                            a custom-built driver and amplifier to create smarter noise cancellation.</p>
+                        <div class="tech-specs">
+                            <span>Adaptive Audio Technology</span>
+                            <span>Conversation Awareness</span>
+                            <span>Transparency Mode</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overlay" id="overlay-4">
+                    <div class="side-info right">
+                        <h2>All-Day Battery Life</h2>
+                        <p>Up to 6 hours of listening time with Active Noise Cancellation enabled. With the MagSafe
+                            Charging Case, you get up to 30 hours of total listening time.</p>
+                        <div class="tech-specs">
+                            <span>USB-C Charging</span>
+                            <span>Wireless Charging</span>
+                            <span>5 min = 1 hour playback</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Showcase Section -->
+        <section class="feature-showcase">
+            <div class="feature-container">
+                <!-- Adaptive Audio Feature -->
+                <div class="feature-card" data-feature="audio">
+                    <div class="feature-visual">
+                        <canvas id="waveform-canvas" width="600" height="400"></canvas>
+                    </div>
+                    <div class="feature-content">
+                        <h2>Adaptive Audio</h2>
+                        <p>Automatically adjusts the listening experience based on environmental conditions and fit. The
+                            H2 chip analyzes external noise 48,000 times per second to optimize sound quality.</p>
+                        <ul class="feature-specs">
+                            <li>Real-time environmental noise analysis</li>
+                            <li>Dynamic EQ adjustment based on ear seal</li>
+                            <li>Personalized sound profile using machine learning</li>
+                            <li>Automatic switching between ANC and Transparency</li>
+                            <li>Computational audio processing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Spatial Audio Feature -->
+                <div class="feature-card" data-feature="spatial">
+                    <div class="feature-content">
+                        <h2>Personalized Spatial Audio with Dynamic Head Tracking</h2>
+                        <p>Immersive 3D sound that follows your head movements for a theater-like experience. Using
+                            built-in gyroscopes and accelerometers, AirPods Pro track the motion of your head and adjust
+                            the sound field accordingly.</p>
+                        <ul class="feature-specs">
+                            <li>Dynamic head tracking with motion sensors</li>
+                            <li>3D audio positioning in real-time</li>
+                            <li>Dolby Atmos and spatial audio support</li>
+                            <li>Personalized HRTF (Head-Related Transfer Function)</li>
+                            <li>Works with Apple Music, Apple TV+, and more</li>
+                            <li>Compatible with iPhone, iPad, and Mac</li>
+                        </ul>
+                    </div>
+                    <div class="feature-visual">
+                        <div class="spatial-demo">
+                            <div class="head-icon"></div>
+                            <div class="sound-wave wave-1"></div>
+                            <div class="sound-wave wave-2"></div>
+                            <div class="sound-wave wave-3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Battery Feature -->
+                <div class="feature-card" data-feature="battery">
+                    <div class="feature-visual">
+                        <div class="battery-display">
+                            <div class="battery-icon">
+                                <div class="battery-level"></div>
+                            </div>
+                            <div class="battery-stats">
+                                <div class="stat">
+                                    <span class="stat-value">6</span>
+                                    <span class="stat-label">Hours Listening</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">30</span>
+                                    <span class="stat-label">Total Hours</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h2>All-Day Battery Life</h2>
+                        <p>Up to 6 hours of listening time on a single charge, 30 hours total with the charging case.
+                        </p>
+                        <ul class="feature-specs">
+                            <li>Fast charging: 5 min = 1 hour</li>
+                            <li>Wireless charging support</li>
+                            <li>USB-C connectivity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exploded View Section -->
+        <section class="exploded-section">
+            <div class="exploded-container">
+                <h2 class="exploded-title">Precision Engineering</h2>
+                <p class="exploded-subtitle">Every component works in perfect harmony</p>
+
+                <div class="exploded-view">
+                    <!-- Component layers -->
+                    <div class="component-layer" data-component="tip">
+                        <div class="component-visual tip"></div>
+                        <div class="component-info right">
+                            <h3>Silicone Ear Tips</h3>
+                            <p>Four sizes (XS, S, M, L) for a customizable acoustic seal</p>
+                        </div>
+                    </div>
+
+                    <div class="component-layer" data-component="mesh">
+                        <div class="component-visual mesh"></div>
+                        <div class="component-info left">
+                            <h3>Acoustic Mesh</h3>
+                            <p>Protects internal components while maintaining audio clarity</p>
+                        </div>
+                    </div>
+
+                    <div class="component-layer" data-component="driver">
+                        <div class="component-visual driver"></div>
+                        <div class="component-info right">
+                            <h3>High-Excursion Driver</h3>
+                            <p>Custom-built driver produces pure, incredibly clear sound</p>
+                        </div>
+                    </div>
+
+                    <div class="component-layer" data-component="amplifier">
+                        <div class="component-visual amplifier"></div>
+                        <div class="component-info left">
+                            <h3>Custom Amplifier</h3>
+                            <p>Powers the speaker driver and works with H1 chip for listening control</p>
+                        </div>
+                    </div>
+
+                    <div class="component-layer" data-component="h2">
+                        <div class="component-visual h2-chip"></div>
+                        <div class="component-info right">
+                            <h3>Apple H2 Chip</h3>
+                            <p>Breakthrough audio performance with 2x more Active Noise Cancellation</p>
+                        </div>
+                    </div>
+
+                    <div class="component-layer" data-component="battery">
+                        <div class="component-visual battery"></div>
+                        <div class="component-info left">
+                            <h3>Battery</h3>
+                            <p>Up to 6 hours of listening time with ANC enabled</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h4>Shop and Learn</h4>
+                    <ul>
+                        <li><a href="#">Store</a></li>
+                        <li><a href="#">Mac</a></li>
+                        <li><a href="#">iPad</a></li>
+                        <li><a href="#">iPhone</a></li>
+                        <li><a href="#">Watch</a></li>
+                        <li><a href="#">AirPods</a></li>
+                        <li><a href="#">TV & Home</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Apple Music</a></li>
+                        <li><a href="#">Apple TV+</a></li>
+                        <li><a href="#">Apple Fitness+</a></li>
+                        <li><a href="#">Apple Arcade</a></li>
+                        <li><a href="#">iCloud</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Apple Store</h4>
+                    <ul>
+                        <li><a href="#">Find a Store</a></li>
+                        <li><a href="#">Genius Bar</a></li>
+                        <li><a href="#">Today at Apple</a></li>
+                        <li><a href="#">Apple Camp</a></li>
+                        <li><a href="#">Financing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>For Business</h4>
+                    <ul>
+                        <li><a href="#">Apple and Business</a></li>
+                        <li><a href="#">Shop for Business</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>About Apple</h4>
+                    <ul>
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Apple Leadership</a></li>
+                        <li><a href="#">Career Opportunities</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Ethics & Compliance</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Contact Apple</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-legal">Copyright © 2024 Apple Inc. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#">Terms of Use</a>
+                    <span>|</span>
+                    <a href="#">Sales and Refunds</a>
+                    <span>|</span>
+                    <a href="#">Legal</a>
+                    <span>|</span>
+                    <a href="#">Site Map</a>
+                </div>
+                <p class="footer-location">United States</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
