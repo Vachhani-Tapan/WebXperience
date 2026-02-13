@@ -123,10 +123,14 @@ body {
 }
 
 .shard-4 .text-wrapper {
-    top: 60%;
-    left: 60%;
+    top: 45%;
+    /* Moved higher to touch the 2nd div boundary line */
+    left: 55%;
+    /* Aligned near the vertical split */
     width: 25%;
-    height: 25%;
+    height: 15%;
+    justify-content: flex-start;
+    /* Align 've' to the left side of its box */
 }
 
 .main-text {
